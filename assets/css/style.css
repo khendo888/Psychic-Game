@@ -1,3 +1,11 @@
+html { 
+  background: (href="assets/images/retina_wood.png") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 h1 {
 	font-size: 24px;
 	font-weight: bold;
@@ -7,3 +15,4 @@ h1 {
 p {
 	font-size: 18px;
 }
+

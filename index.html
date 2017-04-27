@@ -7,6 +7,7 @@
 	<title>The Psychic Game</title>
 </head>
 <body>
+	<h1>The Psychic Game</h1>
 	<!--the object of the game is for the user to guess what letter the computer was thinking of.
 	When the browser opens, the title of the game "The Psychic Game" appears, along with a message that says "Can you guess the letter I'm thinking of?" 
 	Each time a letter is pressed, the computer will display the letter. if the letter pressed matches what the computer was thinking before the choices run out, the user wins. Otherwise the user loses.
@@ -14,20 +15,21 @@
 .
 	first - have the text display on the screen-->
 	<div id="game">
-		<h1>The Psychic Game</h1><br>
-		<p>Can you guess what letter I'm thinking of?</p>
-	</div>	
-	<!--first I need to define my variables: wins, losses, -->
-
+	</div>
+		
 	<script type="text/javascript">
 
- 	// Our array of possible computer choices.
-      var computerChoices = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+	 //$(document).ready(function() {
 
-      // Variables for tracking our wins and losses. They begin at 0.
+
+ 	// Our array of possible computer choices.
+      var computerChoices = ["abcdefghijklmnopqrstuvwxyz"];
+
+      // Variables for tracking our wins, losses and number of tries. They begin at 0.
       var wins = 0;
       var losses = 0;
-      var ties = 0;
+      var tries = 0;
+      var guess=
 
       // When the user presses a key, it will run the following function...
       document.onkeyup = function(event) {
@@ -35,19 +37,35 @@
       // Determine which key was pressed
         var userGuess = event.key;
 
-        // Sets the computerGuess variable equal to a random choice from the computerChoice array.
+      // Sets the computerGuess variable equal to a random choice from the computerChoice array.
         var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 
+        /*set the total number of tries allowed to guess the letter; starts at 0 and get 9 chances to guess the letter. if not guessed within 9 tries, the user loses and the loss number increases by 1. and each time a letter is pressed, it is displayed on the screen. */
+        for (i = 0; i< 9; i++) {
+        	console.log("this is printing" + event.key);
+        	//document.getElementById("game").innerHTML = html;
+        //	if (userGuess === ComputerGuess)
+        }
+        //	}
 
+  
+    
 
 
 		
 
+		
+// Here we create the HTML that will be injected into our div and displayed on the page.
+         var html = "<br>"+"<p>Can you guess what letter I'm thinking of?</p>" +
+          "<p>wins: " + wins + "</p>" +
+          "<p>losses: " + losses + "</p>" +
+          "<p>Guesses left: " + tries + "</p>" +
+          "<p>Letters guessed so far: " + guess + "</p>";
+           document.querySelector("#game").innerHTML = html;
 
-
-
-
-
+}
 	</script>
 </body>
 </html>
+
+
