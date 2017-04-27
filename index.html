@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href=assets/css/reset.css>
+<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<title>The Psychic Game</title>
+</head>
+<body>
+	<!--the object of the game is for the user to guess what letter the computer was thinking of.
+	When the browser opens, the title of the game "The Psychic Game" appears, along with a message that says "Can you guess the letter I'm thinking of?" 
+	Each time a letter is pressed, the computer will display the letter. if the letter pressed matches what the computer was thinking before the choices run out, the user wins. Otherwise the user loses.
+	the letters selected will be displayed on the screen, and there will not be a restart
+.
+	first - have the text display on the screen-->
+	<div id="game">
+		<h1>The Psychic Game</h1><br>
+		<p>Can you guess what letter I'm thinking of?</p>
+	</div>	
+	<!--first I need to define my variables: wins, losses, -->
+
+	<script type="text/javascript">
+
+ 	// Our array of possible computer choices.
+      var computerChoices = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+
+      // Variables for tracking our wins and losses. They begin at 0.
+      var wins = 0;
+      var losses = 0;
+      var ties = 0;
+
+      // When the user presses a key, it will run the following function...
+      document.onkeyup = function(event) {
+
+      // Determine which key was pressed
+        var userGuess = event.key;
+
+        // Sets the computerGuess variable equal to a random choice from the computerChoice array.
+        var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+
+
+
+
+		
+
+
+
+
+
+
+	</script>
+</body>
+</html>
