@@ -1,5 +1,5 @@
-html { 
-  background: (href="assets/images/retina_wood.png") no-repeat center center fixed; 
+html, body { 
+  background: (url="assets/images/retina_wood.png") no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -7,12 +7,16 @@ html {
 }
 
 h1 {
-	font-size: 24px;
+	font-size: 38px;
 	font-weight: bold;
 	padding-top: 5px;
+	padding-left: 10px;
+	color: #6600ff;
 }
 
 p {
 	font-size: 18px;
+	padding-left: 15px;
+	/*font-family: Verdana, sans-serif;*/
 }
 

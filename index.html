@@ -4,10 +4,18 @@
 <meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href=assets/css/reset.css>
 <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+<!-- jQuery CDN (this is needed to load in the jQuery library and make it possible to use all jQuery code, as this is not included in vanilla JavaScript) -->
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+
 	<title>The Psychic Game</title>
 </head>
 <body>
-	<h1>The Psychic Game</h1>
+	<h1>The Psychic Game</h1><br>
+  <p>Can you guess what letter I'm thinking of? Press any key to start the game...</p><br>
 	<!--the object of the game is for the user to guess what letter the computer was thinking of.
 	When the browser opens, the title of the game "The Psychic Game" appears, along with a message that says "Can you guess the letter I'm thinking of?" 
 	Each time a letter is pressed, the computer will display the letter. if the letter pressed matches what the computer was thinking before the choices run out, the user wins. Otherwise the user loses.
@@ -19,17 +27,18 @@
 		
 	<script type="text/javascript">
 
-	 //$(document).ready(function() {
+  // You need the document.ready to wrap ALL of your jQuery, as this is what tells it to wait until the page is fully loaded (or until the 'document' is 'ready') for the jQuery to load.
+	 $(document).ready(function() {
 
 
  	// Our array of possible computer choices.
-      var computerChoices = ["abcdefghijklmnopqrstuvwxyz"];
+      var computerChoices = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 
       // Variables for tracking our wins, losses and number of tries. They begin at 0.
       var wins = 0;
       var losses = 0;
       var tries = 0;
-      var guess=
+      var lettersGuessed = [];
 
       // When the user presses a key, it will run the following function...
       document.onkeyup = function(event) {
@@ -37,18 +46,46 @@
       // Determine which key was pressed
         var userGuess = event.key;
 
+        //once key is pressed, i have to get the letter into the array lettersGuessed
+        lettersGuessed.push(userGuess);
+        console.log(lettersGuessed);
+
       // Sets the computerGuess variable equal to a random choice from the computerChoice array.
         var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 
-        /*set the total number of tries allowed to guess the letter; starts at 0 and get 9 chances to guess the letter. if not guessed within 9 tries, the user loses and the loss number increases by 1. and each time a letter is pressed, it is displayed on the screen. */
-        for (i = 0; i< 9; i++) {
-        	console.log("this is printing" + event.key);
-        	//document.getElementById("game").innerHTML = html;
-        //	if (userGuess === ComputerGuess)
-        }
-        //	}
+        //
 
+
+        /*set the total number of tries allowed to guess the letter; starts at 0 and get 9 chances to guess the letter. if not guessed within 9 tries, the user loses and the loss number increases by 1. and each time a letter is pressed, it is displayed on the screen. */
+        //for (i = 0; i < 9; i++) {
+
+        	//console.log("this is printing: " + userGuess);
+        document.getElementById("game").innerHTML = html;
+        //	if (userGuess === ComputerGuess)
+        //	}
+//once letter is pressed, it needs to be pushed into lettersGuessed
   
+   //NEXT STEPS: check to make sure letters only end up in the array once; check to see if the same letter is pressed
+    //use FOR loop to compare userGuess to lettersGuessed[i], if they are the same, don't add letter to array and print out HEY, you already selected that letter; if not, push to lettersGuessed.
+    //for (i=0, i < 9, i++) {
+    //    if userGuess==lettersGuessed [i] {
+      //  
+  
+
+
+   //once letter is pressed and pushed to array, i need to compare to computerGuess,
+if (userGuess == compGuess) {
+      // win
+      wins = wins + 1;
+      // writes javascrip to HTML
+      document.querySelectory('.wins').innerHTML = "Wins: " + wins;
+      // Guesses array starts back to nothing
+      guesses = [];
+      // Computer Guesses a new letter
+      var compGuess = alphabet[Math.floor(Math.random() * alphabet.length)];
+      // Console log new computer guess
+      console.log(compGuess);
+    }
     
 
 
@@ -56,16 +93,21 @@
 
 		
 // Here we create the HTML that will be injected into our div and displayed on the page.
-         var html = "<br>"+"<p>Can you guess what letter I'm thinking of?</p>" +
-          "<p>wins: " + wins + "</p>" +
-          "<p>losses: " + losses + "</p>" +
+         var html = 
+          "<p>Wins: " + wins + "</p>" +
+          "<p>Losses: " + losses + "</p>" +
           "<p>Guesses left: " + tries + "</p>" +
-          "<p>Letters guessed so far: " + guess + "</p>";
+          "<p>Letters guessed so far: " + lettersGuessed + "</p>";
+
            document.querySelector("#game").innerHTML = html;
 
-}
+     };
+   }); //} end of document.ready
+
 	</script>
 </body>
 </html>
+
+
 
 
